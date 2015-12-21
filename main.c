@@ -27,15 +27,13 @@ void main() {
 			printf("Il file non e' presente");
 		else {
 			N = leggi_classe(fpi, classe);
-			fpo = fopen("classe_ordinata.txt", "w");
 
 			ordina_voto_CRESCENTE(N, classe);
 			printf("Gli studenti in ordine CRESCENTE in base al voto sono: \n");
 			stampa_classe(N, classe);
 
 			ordina_voto_DECRESCENTE(N, classe);
-			printf(
-				"Gli studenti in ordine DECRESCENTE in base al voto sono: \n");
+			printf("Gli studenti in ordine DECRESCENTE in base al voto sono: \n");
 			stampa_classe(N, classe);
 		}
 		printf("Vuoi rieseguire il programma? S o N \n");
@@ -93,10 +91,7 @@ void scambia(struct studente* A, struct studente* B) {
 }
 
 void stampa_classe(int A, struct studente* B) {
-	int i;
-	for (i = 0; i < A; i++) {
-		printf("%s %s %d", B[i].cognome, B[i].nome, &B[i].voto);
-		printf("\n");
+	for (int i = 0; i < A; i++) {
+		printf("%s %s %d\n", B[i].cognome, B[i].nome, B[i].voto);
 	}
-
 }
