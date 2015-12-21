@@ -53,33 +53,33 @@ int leggi_classe(FILE* A, struct studente* B) {
 
 }
 
-void ordina_voto_CRESCENTE(int A, struct studente* B) {
+void ordina_voto_CRESCENTE(int lunghezza, struct studente* studenti) {
 	int i, j, imin;
 
-	for (i = 0; i < A - 1; i++) {
+	for (i = 0; i < lunghezza - 1; i++) {
 		imin = i;
 
-		for (j = 0; j < A; j++)
+		for (j = 0; j < lunghezza; j++)
 
-			if (B[j].voto < B[imin].voto)
+			if (studenti[j].voto < studenti[imin].voto)
 				imin = j;
 
-		scambia(&B[i], &B[imin]);
+		scambia(&studenti[i], &studenti[imin]);
 	}
 }
 
-void ordina_voto_DECRESCENTE(int A, struct studente* B) {
+void ordina_voto_DECRESCENTE(int lunghezza, struct studente* studenti) {
 	int i, j, imax;
 
-	for (i = 0; i < A - 1; i++) {
+	for (i = 0; i < lunghezza - 1; i++) {
 		imax = i;
 
-		for (j = i + 1; j < A; j++)
+		for (j = i + 1; j < lunghezza; j++)
 
-			if (B[j].voto > B[imax].voto)
+			if (studenti[j].voto > studenti[imax].voto)
 				imax = j;
 
-		scambia(&B[i], &B[imax]);
+		scambia(&studenti[i], &studenti[imax]);
 	}
 }
 
@@ -90,8 +90,8 @@ void scambia(struct studente* A, struct studente* B) {
 	*B = temp;
 }
 
-void stampa_classe(int A, struct studente* B) {
-	for (int i = 0; i < A; i++) {
-		printf("%s %s %d\n", B[i].cognome, B[i].nome, B[i].voto);
+void stampa_classe(int lunghezza, struct studente* studenti) {
+	for (int i = 0; i < lunghezza; i++) {
+		printf("%s %s %d\n", studenti[i].cognome, studenti[i].nome, studenti[i].voto);
 	}
 }
