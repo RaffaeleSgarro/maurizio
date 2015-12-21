@@ -52,32 +52,22 @@ int leggi_classe(FILE* A, struct studente* B) {
 }
 
 void ordina_voto_CRESCENTE(int lunghezza, struct studente* studenti) {
-	int i, j, imin;
-
-	for (i = 0; i < lunghezza - 1; i++) {
-		imin = i;
-
-		for (j = 0; j < lunghezza; j++)
-
-			if (studenti[j].voto < studenti[imin].voto)
-				imin = j;
-
-		scambia(&studenti[i], &studenti[imin]);
+	for (int stop = lunghezza - 1; stop > 0; stop--) {
+		for (int i = 0; i < stop; i++) {
+			if (studenti[i].voto > studenti[i + 1].voto) {
+				scambia(&studenti[i], &studenti[i + 1]);
+			}
+		}
 	}
 }
 
 void ordina_voto_DECRESCENTE(int lunghezza, struct studente* studenti) {
-	int i, j, imax;
-
-	for (i = 0; i < lunghezza - 1; i++) {
-		imax = i;
-
-		for (j = i + 1; j < lunghezza; j++)
-
-			if (studenti[j].voto > studenti[imax].voto)
-				imax = j;
-
-		scambia(&studenti[i], &studenti[imax]);
+	for (int stop = lunghezza - 1; stop > 0; stop--) {
+		for (int i = 0; i < stop; i++) {
+			if (studenti[i].voto < studenti[i + 1].voto) {
+				scambia(&studenti[i], &studenti[i + 1]);
+			}
+		}
 	}
 }
 
