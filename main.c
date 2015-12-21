@@ -42,15 +42,13 @@ void main() {
 }
 
 int leggi_classe(FILE* A, struct studente* B) {
-	int i;
-	i = 0;
+	int i = 0;
 
 	while (fscanf(A, "%s%s%d", B[i].cognome, B[i].nome, &B[i].voto) != EOF)
 	{
 		i = i + 1;
 	}
 	return i;
-
 }
 
 void ordina_voto_CRESCENTE(int lunghezza, struct studente* studenti) {
