@@ -65,13 +65,19 @@ void ordine_alfabetico(int lunghezza, struct studente* studenti) {
 	}
 }
 
+/*
+ * Use selection sort for this
+ */
 void ordina_voto_CRESCENTE(int lunghezza, struct studente* studenti) {
-	for (int stop = lunghezza - 1; stop > 0; stop--) {
-		for (int i = 0; i < stop; i++) {
-			if (studenti[i].voto > studenti[i + 1].voto) {
-				scambia(&studenti[i], &studenti[i + 1]);
+	int i, j, imin;
+	for (i = 0; i < lunghezza - 1; i++) {
+		imin = i;
+		for (j = i; j < lunghezza; j++) {
+			if (studenti[j].voto < studenti[imin].voto) {
+				imin = j;
 			}
 		}
+		scambia(&studenti[i], &studenti[imin]);
 	}
 }
 
