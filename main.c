@@ -13,7 +13,7 @@ struct studente {
 int leggi_classe(FILE*, struct studente*);
 void ordina_voto_CRESCENTE(int, struct studente*);
 void ordina_voto_DECRESCENTE(int, struct studente*);
-
+void ordine_alfabetico(int, struct studente*);
 void scambia(struct studente*, struct studente*);
 void stampa_classe(int, struct studente*);
 
@@ -35,6 +35,10 @@ void main() {
 			ordina_voto_DECRESCENTE(N, classe);
 			printf("Gli studenti in ordine DECRESCENTE in base al voto sono: \n");
 			stampa_classe(N, classe);
+
+			ordine_alfabetico(N, classe);
+			printf("Gli studenti in ordine ALFABETICO sono: \n");
+			stampa_classe(N, classe);
 		}
 		printf("Vuoi rieseguire il programma? S o N \n");
 
@@ -49,6 +53,16 @@ int leggi_classe(FILE* A, struct studente* B) {
 		i = i + 1;
 	}
 	return i;
+}
+
+void ordine_alfabetico(int lunghezza, struct studente* studenti) {
+	for (int stop = lunghezza - 1; stop > 0; stop--) {
+		for (int i = 0; i < stop; i++) {
+			if (strcmp(studenti[i].cognome, studenti[i + 1].cognome) > 0) {
+				scambia(&studenti[i], &studenti[i + 1]);
+			}
+		}
+	}
 }
 
 void ordina_voto_CRESCENTE(int lunghezza, struct studente* studenti) {
@@ -80,6 +94,7 @@ void scambia(struct studente* A, struct studente* B) {
 
 void stampa_classe(int lunghezza, struct studente* studenti) {
 	for (int i = 0; i < lunghezza; i++) {
-		printf("%s %s %d\n", studenti[i].cognome, studenti[i].nome, studenti[i].voto);
+		printf("%s, %s: %d\n", studenti[i].cognome, studenti[i].nome, studenti[i].voto);
 	}
+	printf("\n");
 }
